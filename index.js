@@ -8,47 +8,9 @@ function closeSidebar(){
 
 }
 document.addEventListener('DOMContentLoaded', function() {
-    const counters = document.querySelectorAll('.counter-info h2');
-    const percentages = document.querySelectorAll('.content-list span');
+
+    
     let hasAnimated = false; // To ensure animation runs only once
-
-    function startCounting() {
-        // Counting for the main counters
-        counters.forEach(counter => {
-            const target = +counter.getAttribute('data-target'); // Get target number
-            let count = 0; // Initialize count
-
-            const updateCounter = () => {
-                if (count < target) {
-                    count++; // Increment count
-                    counter.textContent = count; // Update the displayed number
-                    setTimeout(updateCounter, 5); // Call updateCounter again
-                } else {
-                    counter.textContent = target; // Ensure final number is displayed
-                }
-            };
-
-            updateCounter(); // Start counting
-        });
-
-        // Counting for the percentages
-        percentages.forEach(percentage => {
-            const target = +percentage.getAttribute('data-target').slice(0, -1); // Get target percentage
-            let count = 0; // Initialize count
-
-            const updatePercentage = () => {
-                if (count < target) {
-                    count++; // Increment count
-                    percentage.textContent = count + '%'; // Update the displayed percentage
-                    setTimeout(updatePercentage, 20); // Call updatePercentage again
-                } else {
-                    percentage.textContent = target + '%'; // Ensure final percentage is displayed
-                }
-            };
-
-            updatePercentage(); // Start counting
-        });
-    }
 
     function handleScroll() {
         const sectionPosition = document.querySelector('.tokenomics').getBoundingClientRect().top;
@@ -108,4 +70,35 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Run once to check if already in view
 });
+document.addEventListener("DOMContentLoaded", function() {
+    const counters = document.querySelectorAll('[data-target]');
+
+    counters.forEach(counter => {
+        const updateCounter = () => {
+            const target = +counter.getAttribute('data-target').replace(/[^0-9]/g, ''); // Remove non-numeric characters
+            const count = +counter.innerText.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+
+            const increment = target / 150; // Adjust the divisor to control the speed
+
+            if (count < target) {
+                counter.innerText = formatNumber(Math.ceil(count + increment));
+                setTimeout(updateCounter, 10); // Update every 10ms
+            } else {
+                counter.innerText = formatNumber(target);
+            }
+        };
+
+        const formatNumber = (num) => {
+            // Handle your specific cases
+            if (counter.innerText.includes('$')) {
+                return `$${(num / 1000000).toFixed(1)}M+`; // Format as $X.XM+
+            } else {
+                return num + counter.innerText.replace(/[0-9]/g, ''); // Append any non-numeric characters
+            }
+        };
+
+        updateCounter();
+    });
+});
+
 
