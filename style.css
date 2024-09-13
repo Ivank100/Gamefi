@@ -5,6 +5,7 @@
    body{
         font-family: "Russo One", sans-serif;
         background-color: #FFFFFF;
+        overflow: hidden;
     }
     .bg-wrapper{
         background-image: url("./Images/banner-bg.jpg");
