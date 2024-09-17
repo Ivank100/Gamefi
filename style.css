@@ -1,15 +1,20 @@
    *{
     margin:0;
     padding:0;
-   }
+   
+}
+html, body {
+    overflow-x: hidden;
+}
    body{
         font-family: "Russo One", sans-serif;
         background-color: #FFFFFF;
+        box-sizing: border-box;
     }
     .bg-wrapper{
         background-image: url("./Images/banner-bg.jpg");
         z-index: -1;
-        width:100%;
+        max-width:100%;
         height:auto;
         background-repeat: no-repeat;
         background-size: cover;
@@ -23,7 +28,7 @@
     header{
         height:20vh;
         display:flex;
-        width:100%;
+        max-width:100%;
         justify-content: center;
     }
     nav{
@@ -641,7 +646,7 @@
 .previous-igo{
     background: rgb(9, 11, 26);
     min-height:100vh;
-    max-width:100%;
+    width:100%;
     padding-bottom: 30px; /* Adds space inside the section at the bottom */
     display:Flex;
     justify-content: center;
@@ -655,7 +660,6 @@
     flex: 0 1 auto; /* Allow the row to grow but not shrink */
     align-items: center;
     gap:3em;
-    padding-right: 3em;
     
 }
 
@@ -736,7 +740,7 @@
 }
 @media screen and (max-width:  768px) {
     .previous-igo .container{
-        width:100%;
+        width:80%;
     }
     
     .previous-igo-row{
@@ -746,6 +750,7 @@
         height:auto;
         align-items: center;
         text-align: center;
+        gap:1em;
         
     }
     .previous-igo-container{
