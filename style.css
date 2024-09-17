@@ -5,7 +5,6 @@
    body{
         font-family: "Russo One", sans-serif;
         background-color: #FFFFFF;
-        overflow: hidden;
     }
     .bg-wrapper{
         background-image: url("./Images/banner-bg.jpg");
@@ -663,12 +662,11 @@
 .previous-igo-row{
     position: relative;
     background: rgba(30, 31, 53, 0.8);
-    width:60%;
+    width:100%;
     height: 150px;
     display:Flex;
     align-items: center;
-    gap: 50px;
-    min-width: 900px
+    gap: 7em;
 
 }
 .previous-igo-row:hover{
@@ -687,6 +685,7 @@
     width:100%;
     align-items: center;
     justify-content: space-evenly;
+    gap: 3em;
 }
 .previous-igo-content img{
     width:35px;
@@ -714,14 +713,6 @@
     
 }
 @media screen and (max-width:   1200px) {
-    .previous-igo-row{
-        width:60%;
-        display:Flex;
-        align-items: center;
-        gap: 50px;
-        min-width: 900px
-    
-    }
     .project-img{
         width:65px;
         height:65px;
@@ -734,10 +725,6 @@
 
 }
 @media screen and (max-width:  990px) {
-    .previous-igo-row{
-        width:60%;
-        min-width:750px;
-    }
     .project-img{
         width:55px;
         height:55px;
@@ -748,9 +735,12 @@
 
 }
 @media screen and (max-width:  768px) {
+    .previous-igo .container{
+        width:100%;
+    }
     
     .previous-igo-row{
-        min-width: 400px;
+        width:100% !important;
         text-wrap: auto;
         flex-direction: column;
         height:auto;
@@ -764,6 +754,7 @@
         align-items: center;
         gap: 30px;
         height:auto;
+        width:100%;
     }
     .project-img{
         width:85px;
